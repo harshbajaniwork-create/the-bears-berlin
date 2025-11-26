@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Font weight variables */
+:root {
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+}
+
+@utility pattern {
+  @apply bg-[url('/bg-gradient.png')] bg-cover min-h-screen bg-no-repeat;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --triangle: #806456;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
+    --triangle: #7E3F0F;
+    --glass-bg: rgba(0, 0, 0, 0.1);
+  }
+
+   html {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  body {
+    @apply   transition-colors duration-300;
+  }
+}
+
+.pattern {
+  @apply bg-[url('/bg-gradient.png')] bg-cover min-h-screen bg-no-repeat;
+}
+
+.exploration-heading {
+  @apply uppercase font-bold text-black dark:text-white text-center w-full whitespace-nowrap text-[min(12vw,240px)] mb-12 transition-colors relative
+}
+
+.service-heading {
+  @apply absolute bottom-0 w-full text-center text-[75px] sm:text-[120px] md:text-[160px] lg:text-[180px] xl:text-[230px] 2xl:text-[275px] font-bold text-[#2F3A36] dark:text-[#808c80] tracking-widest uppercase leading-none z-30
+}
+
+.hero-text-gradient {
+ color: #000000; 
+ background-image: linear-gradient(45deg, #000000 , #B66613 70%); 
+ background-clip: text; 
+ -webkit-background-clip: text; 
+ -webkit-text-fill-color: transparent; 
+}
+
+.hero-text-gradient-2 {
+  color: #000000; 
+  background-image: linear-gradient(45deg, #000000 , #B66613 22%); 
+  background-clip: text; 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+ }
+
+ .hero-text-gradient-3 {
+  color: #000000; 
+  background-image: linear-gradient(45deg, #000000 , #B66613 20%); 
+  background-clip: text; 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+ }
+
+/* Apply dark mode gradient using Tailwind's dark selector */
+:is(.dark) .hero-text-gradient {
+ color: #FFFFFF; 
+ background-image: linear-gradient(45deg, #FFFFFF , #D0FC2D 70%); 
+ background-clip: text; 
+ -webkit-background-clip: text; 
+ -webkit-text-fill-color: transparent; 
+}
+
+:is(.dark) .hero-text-gradient-2 {
+  color: #FFFFFF; 
+  background-image: linear-gradient(45deg, #FFFFFF , #D0FC2D 22%); 
+  background-clip: text; 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+ }
+
+ :is(.dark) .hero-text-gradient-3 {
+  color: #FFFFFF; 
+  background-image: linear-gradient(45deg, #FFFFFF , #D0FC2D 20%); 
+  background-clip: text; 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+ }
+
+
+
+.dark .pattern {
+  @apply bg-gray-900;
+}
+
+/* Professional Gallery CSS - Ensure proper masonry layout */
+.break-inside-avoid {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Ensure images load with proper quality */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+.video-detail-container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 450px;
+}
+
+@keyframes wordSlider {
+  0%, 40% {
+    transform: translateY(0%);
+  }
+  50%, 90% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.word-slider {
+  animation: wordSlider 6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@layer base {
+  body {
+@media (min-width: 768px) {
+    @apply cursor-none;
+  }
+  }
+}
+

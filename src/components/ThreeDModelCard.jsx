@@ -40,6 +40,7 @@ const ThreeDModelCard = ({
   modelKey = "outdoor-sitting",
   height = 420,
   scale = 0.02,
+  onLoad,
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -53,10 +54,14 @@ const ThreeDModelCard = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
+      // Call onLoad callback when model is ready (only once per model)
+      if (onLoad) {
+        onLoad();
+      }
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [modelKey]);
+  }, [modelKey]); // Remove onLoad from dependencies to prevent infinite calls
 
   const handlePointerMove = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -84,10 +89,17 @@ const ThreeDModelCard = ({
         <Canvas
           camera={{ position: [0, 0, 4], fov: 45 }}
           onCreated={({ gl }) => {
-            // Handle WebGL context errors
-            gl.domElement.addEventListener("webglcontextlost", () => {
+            // Handle WebGL context errors safely
+            try {
+              if (gl && gl.domElement) {
+                gl.domElement.addEventListener("webglcontextlost", () => {
+                  setHasError(true);
+                });
+              }
+            } catch (error) {
+              console.warn("WebGL setup error:", error);
               setHasError(true);
-            });
+            }
           }}
         >
           <Suspense fallback={<CanvasLoader />}>

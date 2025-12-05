@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,34 +8,102 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProfessionalGallery = ({ items = [] }) => {
   const containerRef = useRef();
+  const scrollTriggerRef = useRef(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [viewMode, setViewMode] = useState("grid"); // 'grid', 'detail'
   const [filter, setFilter] = useState("all"); // 'all', 'images', 'models', 'videos'
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Cleanup function for ScrollTrigger
+  const cleanupScrollTrigger = useCallback(() => {
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
-    // GSAP scroll animation for gallery items
-    gsap.fromTo(
-      ".gallery-item",
-      {
+    // Cleanup previous ScrollTrigger
+    cleanupScrollTrigger();
+
+    // Small delay to ensure DOM is ready after filter change
+    const timeoutId = setTimeout(() => {
+      if (!containerRef.current) return;
+
+      // GSAP scroll animation for gallery items
+      const galleryItems =
+        containerRef.current.querySelectorAll(".gallery-item");
+
+      if (galleryItems.length === 0) return;
+
+      // Set initial state
+      gsap.set(galleryItems, {
         opacity: 0,
         y: 60,
         scale: 0.95,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+      });
+
+      // Create new ScrollTrigger instance
+      scrollTriggerRef.current = ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 70%",
+        onEnter: () => {
+          gsap.to(galleryItems, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+          });
         },
-      }
-    );
-  }, [filter]);
+        onLeave: () => {
+          gsap.to(galleryItems, {
+            opacity: 0,
+            y: 60,
+            scale: 0.95,
+            duration: 0.4,
+            stagger: 0.05,
+            ease: "power2.in",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(galleryItems, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(galleryItems, {
+            opacity: 0,
+            y: 60,
+            scale: 0.95,
+            duration: 0.4,
+            stagger: 0.05,
+            ease: "power2.in",
+          });
+        },
+      });
+
+      setIsLoading(false);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      cleanupScrollTrigger();
+    };
+  }, [filter, cleanupScrollTrigger]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      cleanupScrollTrigger();
+    };
+  }, [cleanupScrollTrigger]);
 
   const filteredItems = items.filter((item) => {
     if (filter === "all") return true;
@@ -125,6 +193,20 @@ const ProfessionalGallery = ({ items = [] }) => {
                           src={item.src}
                           alt={item.alt || "Gallery image"}
                           className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                          onLoad={(e) => {
+                            // Ensure image is visible after loading
+                            e.target.style.opacity = "1";
+                          }}
+                          onError={(e) => {
+                            // Handle broken images gracefully
+                            e.target.style.display = "none";
+                            console.warn(`Failed to load image: ${item.src}`);
+                          }}
+                          style={{
+                            opacity: 0,
+                            transition: "opacity 0.3s ease",
+                          }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>

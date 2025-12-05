@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProfessionalGallery from "../../../components/ProfessionalGallery";
 import { threeDItems } from "../../../constants";
@@ -16,8 +16,18 @@ function shuffleStable(list) {
 }
 
 const ThreeDProject = () => {
+  const [isPageReady, setIsPageReady] = useState(false);
   // Shuffle items once to avoid category clustering per lane
   const shuffledItems = useMemo(() => shuffleStable(threeDItems), []);
+
+  // Ensure page is fully loaded before showing content
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <ScrollSmoothProvider>
@@ -43,7 +53,13 @@ const ThreeDProject = () => {
 
           {/* Professional 3D Gallery */}
           <section className="mt-12">
-            <ProfessionalGallery items={shuffledItems} />
+            {isPageReady ? (
+              <ProfessionalGallery items={shuffledItems} />
+            ) : (
+              <div className="flex items-center justify-center min-h-[400px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-600 dark:border-gray-300"></div>
+              </div>
+            )}
           </section>
         </div>
         <ProjectFooter

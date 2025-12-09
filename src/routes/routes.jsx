@@ -1,37 +1,26 @@
 import { Route, RootRoute, Router } from "@tanstack/react-router";
-import { lazy } from "react";
-import RootComponent from "../components/RootComponent";
-
-// Main pages - keep these as direct imports for faster initial load
-import App from "../App";
 import Services from "../app/services/page";
+import App from "../App";
 import Contact from "../app/contact/page";
 import About from "../app/about/page";
 import Projects from "../app/projects/page";
+import MirageProject from "../app/projects/mirage/page";
+import MananaProject from "../app/projects/manana/page";
+import FableticsProject from "../app/projects/fabletics/page";
+import SinousSistersProject from "../app/projects/sinous-sisters/page";
+import PrivacyPolicy from "../app/privacy-policy/page";
+import Impressum from "../app/impressum/page";
 import MoodJungle from "../app/mood-jungle/page";
+import RootComponent from "../components/RootComponent";
+import LeWagonProject from "../app/projects/le-wagon/page";
+import GinjaProject from "../app/projects/ginja/page";
+import NikeJilouProject from "../app/projects/nike-jilou/page";
+import NikeSp24Project from "../app/projects/nike-sp24/page";
+import ThreeDProject from "../app/projects/3d/page";
 import MoodJungleAll from "../app/mood-jungle-all/page";
-
-// Lazy load project pages to reduce initial bundle size
-const MirageProject = lazy(() => import("../app/projects/mirage/page"));
-const MananaProject = lazy(() => import("../app/projects/manana/page"));
-const FableticsProject = lazy(() => import("../app/projects/fabletics/page"));
-const SinousSistersProject = lazy(() =>
-  import("../app/projects/sinous-sisters/page")
-);
-const LeWagonProject = lazy(() => import("../app/projects/le-wagon/page"));
-const GinjaProject = lazy(() => import("../app/projects/ginja/page"));
-const NikeJilouProject = lazy(() => import("../app/projects/nike-jilou/page"));
-const NikeSp24Project = lazy(() => import("../app/projects/nike-sp24/page"));
-const ThreeDProject = lazy(() => import("../app/projects/3d/page"));
-const AfroHealthProject = lazy(() => import("../app/projects/afrohealth/page"));
-const MotionProject = lazy(() => import("../app/projects/motion/page"));
-const ZalandoNikeProject = lazy(() =>
-  import("../app/projects/zalando-nike/page")
-);
-
-// Lazy load legal pages
-const PrivacyPolicy = lazy(() => import("../app/privacy-policy/page"));
-const Impressum = lazy(() => import("../app/impressum/page"));
+import AfroHealthProject from "../app/projects/afrohealth/page";
+import MotionProject from "../app/projects/motion/page";
+import ZalandoNikeProject from "../app/projects/zalando-nike/page";
 
 const rootRoute = new RootRoute({
   component: RootComponent,

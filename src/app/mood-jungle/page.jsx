@@ -6,11 +6,7 @@ import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 const MoodJungle = () => {
   const isDesktop = useMediaQuery({ minWidth: 768 });
 
-  return (
-    <ScrollSmoothProvider>
-      {isDesktop ? <MoodJungleDesktop /> : <MoodJungleMobile />}
-    </ScrollSmoothProvider>
-  );
+  return <>{isDesktop ? <MoodJungleDesktop /> : <MoodJungleMobile />}</>;
 };
 
 export default MoodJungle;

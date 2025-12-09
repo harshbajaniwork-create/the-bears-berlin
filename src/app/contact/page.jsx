@@ -231,6 +231,7 @@ const Contact = () => {
                     "Social Media",
                     "Influencer Marketing",
                     "Paid Campaigns",
+                    "AI",
                     "Design & Development",
                     "Content Production",
                     "Not Sure Yet / Let's Talk",

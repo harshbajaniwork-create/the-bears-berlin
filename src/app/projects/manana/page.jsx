@@ -15,7 +15,7 @@ const MananaProject = () => {
   const itemsToShow = isMobile ? 2 : isTablet ? 3 : 4;
 
   return (
-    <ScrollSmoothProvider>
+    <>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         {/* Main container with max-width constraint */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
@@ -141,7 +141,7 @@ const MananaProject = () => {
                   a living cultural map evolving with the rhythm of the city.
                   Our editorial strategy blended timely stories, new openings,
                   emerging designers, and cultural highlights, with recurring
-                  formats like Where to Go and Where to Dance. These series
+                  formats like where to go and where to dance. These series
                   became the brand’s signature, building anticipation and
                   genuine engagement within the community.
                 </p>
@@ -233,7 +233,7 @@ const MananaProject = () => {
           nextProject="/projects/fabletics"
         />
       </main>
-    </ScrollSmoothProvider>
+    </>
   );
 };
 

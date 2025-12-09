@@ -56,9 +56,9 @@ const Header = ({ bgClass = "bg-transparent dark:bg-transparent" }) => {
           {/* Mobile Logo */}
           <Link to="/" className="md:hidden flex items-center">
             <img
-              src="/favicon.webp"
+              src="/logo_black.png"
               alt="Bears Berlin Logo"
-              className="size-6 filter-none dark:invert"
+              className="size-16 filter-none dark:invert"
             />
           </Link>
 

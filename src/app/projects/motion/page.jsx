@@ -6,7 +6,7 @@ import { motionGallery } from "../../../constants";
 const MotionProject = () => {
   const items = motionGallery;
   return (
-    <ScrollSmoothProvider>
+    <>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section (consistent with other projects) */}
@@ -40,7 +40,7 @@ const MotionProject = () => {
           nextProject="/projects/3d"
         />
       </main>
-    </ScrollSmoothProvider>
+    </>
   );
 };
 

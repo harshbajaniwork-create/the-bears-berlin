@@ -2,7 +2,7 @@ import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 
 export default function PrivacyStatement() {
   return (
-    <ScrollSmoothProvider>
+    <>
       <section className="bg-white dark:bg-black">
         <div className="max-w-4xl mx-auto px-4 py-28  text-black dark:text-white">
           <h1 className="text-4xl font-bold mb-8">Privacy Statement</h1>
@@ -202,6 +202,6 @@ export default function PrivacyStatement() {
           </section>
         </div>
       </section>
-    </ScrollSmoothProvider>
+    </>
   );
 }

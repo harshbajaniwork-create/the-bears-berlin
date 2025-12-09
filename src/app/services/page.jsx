@@ -60,9 +60,7 @@ const Services = () => {
 
   return (
     <>
-      <ScrollSmoothProvider>
-        {isDesktop ? <ServicesDesktop /> : <ServicesMobile />}
-      </ScrollSmoothProvider>
+      <>{isDesktop ? <ServicesDesktop /> : <ServicesMobile />}</>
     </>
   );
 };

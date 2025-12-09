@@ -16,7 +16,7 @@ const FableticsProject = () => {
   const itemsToShow = isMobile ? 2 : isTablet ? 3 : 4;
 
   return (
-    <ScrollSmoothProvider>
+    <>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         {/* Main container with max-width constraint */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
@@ -145,7 +145,22 @@ const FableticsProject = () => {
               </div>
               <div>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
-                  {project?.projectDescription}
+                  We prioritized authenticity, selecting influencers whose brand
+                  fit, audience demographics, and community engagement aligned
+                  with Fabletics’, at the same time ensuring we reach key
+                  performance KPIs. Each collaboration was approached with the
+                  focus on engaging storytelling, authentic product integration,
+                  and long-term relationships. The goal was to ensure every
+                  campaign felt natural to the creator’s lifestyle while
+                  delivering measurable brand impact.
+                </p>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
+                  By leveraging new collections and exclusive pieces from
+                  collaborators like Kevin Hart and Khloé Kardashian, we tapped
+                  into the aspirational pull of Fabletics and created
+                  high-impact content that successfully captivated new
+                  audiences, drove conversation, built a sense of exclusivity
+                  and belonging around the brand.
                 </p>
               </div>
             </div>
@@ -199,7 +214,7 @@ const FableticsProject = () => {
           nextProject="/projects/afrohealth"
         />
       </main>
-    </ScrollSmoothProvider>
+    </>
   );
 };
 

@@ -62,7 +62,7 @@ const GinjaProject = () => {
   }, []);
 
   return (
-    <ScrollSmoothProvider>
+    <>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section */}
@@ -142,7 +142,7 @@ const GinjaProject = () => {
               {/* Model 1 */}
               <div
                 ref={canvasRef1}
-                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02] relative"
               >
                 <Canvas
                   camera={{ position: [0, 0, 4], fov: 40 }}
@@ -171,12 +171,19 @@ const GinjaProject = () => {
                     makeDefault
                   />
                 </Canvas>
+                <div
+                  className={`absolute bottom-4 right-4 px-3 py-1.5 bg-black/70 dark:bg-white/70 backdrop-blur-sm rounded-full text-white dark:text-black text-xs font-medium transition-opacity duration-300 ${
+                    isDragging1 ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  Drag to interact
+                </div>
               </div>
 
               {/* Model 2 */}
               <div
                 ref={canvasRef2}
-                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02] relative"
               >
                 <Canvas
                   camera={{ position: [0, 0, 4], fov: 40 }}
@@ -205,12 +212,19 @@ const GinjaProject = () => {
                     makeDefault
                   />
                 </Canvas>
+                <div
+                  className={`absolute bottom-4 right-4 px-3 py-1.5 bg-black/70 dark:bg-white/70 backdrop-blur-sm rounded-full text-white dark:text-black text-xs font-medium transition-opacity duration-300 ${
+                    isDragging2 ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  Drag to interact
+                </div>
               </div>
 
               {/* Model 3 */}
               <div
                 ref={canvasRef3}
-                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-[1.02] relative"
               >
                 <Canvas
                   camera={{ position: [0, 0, 4], fov: 40 }}
@@ -239,6 +253,13 @@ const GinjaProject = () => {
                     makeDefault
                   />
                 </Canvas>
+                <div
+                  className={`absolute bottom-4 right-4 px-3 py-1.5 bg-black/70 dark:bg-white/70 backdrop-blur-sm rounded-full text-white dark:text-black text-xs font-medium transition-opacity duration-300 ${
+                    isDragging3 ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  Drag to interact
+                </div>
               </div>
             </div>
           </div>
@@ -300,7 +321,7 @@ const GinjaProject = () => {
           nextProject="/projects/motion"
         />
       </main>
-    </ScrollSmoothProvider>
+    </>
   );
 };
 

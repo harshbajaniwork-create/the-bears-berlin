@@ -6,7 +6,7 @@ import ProjectClientMarquee from "../../components/ProjectClientMarquee";
 const Projects = () => {
   return (
     <>
-      <ScrollSmoothProvider>
+      <>
         <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-black">
           {/* Container with max width to prevent content from getting too wide */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 pt-20 lg:pt-32">
@@ -130,7 +130,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-      </ScrollSmoothProvider>
+      </>
     </>
   );
 };

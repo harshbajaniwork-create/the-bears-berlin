@@ -203,7 +203,7 @@ export const projects = [
     projectDescription:
       "Our goal was to capture not only the key highlights of the day, but most importantly the emotion behind them. We wanted to translate the atmosphere into motion, creating a film that carried the same rhythm and sense of connection that participants experienced on site.",
     finalDescription:
-      "The video became a vivid echo of the day, full of motion and rooted in the community that made it special. We focused on the faces, emotions, and interactions that defined the atmosphere, while showing how the Nike Invincible 3 naturally became part of experience, carrying the day’s energy forward. The film took Nike’s story beyond the walls of the store, letting it travel and expand the reach of the campaign",
+      "The video became a vivid echo of the day, full of motion and rooted in the community that made it special. We focused on the faces, emotions, and interactions that defined the atmosphere, while showing how the Nike Invincible 3 naturally became part of experience, carrying the day’s energy forward. The film took Nike’s story beyond the walls of the store, letting it travel and expand the reach of the campaign.",
     videos: [
       "307053b544fdbf5fc679bb96e70c4cb1",
       "f288187015046e37bc467f1da858d088",
@@ -271,13 +271,13 @@ export const projects = [
     name: "Le Wagon",
     image: "/le-wagon.webp",
     logo: "/logos/le-wagon.webp",
-    scopeOfWork: "Influencer Marketing.",
+    scopeOfWork: "Influencer Marketing",
     industry: "Tech, Education",
     year: "2025",
     tagline:
       "Le Wagon is a global leader in tech education, with over 100 campuses and top rankings worldwide. From web development and data science to AI and growth marketing, their programs help learners from all backgrounds build skills for today’s digital economy. Our task: strengthen Le Wagon’s marketing mix through a fully built, high-performing influencer strategy.",
     finalDescription:
-      "The creator content highly resonated with the audience, bringing visibility, authenticity, and genuine connection, and making brand’s story travel through the digital wild",
+      "The creator content highly resonated with the audience, bringing visibility, authenticity, and genuine connection, and making brand’s story travel through the digital wild.",
     images: ["/product-images/leWagon-1.webp"],
     videos: [
       "335fb35f284100eb95df66de492d4273",
@@ -316,7 +316,7 @@ export const projects = [
     name: "Fabletics",
     image: "/fabletics.webp",
     logo: "/fabletics-logo.png",
-    scopeOfWork: "Influencer Marketing.",
+    scopeOfWork: "Influencer Marketing",
     industry: "Sport, Fashion, Lifestyle",
     year: "2022",
     tagline:

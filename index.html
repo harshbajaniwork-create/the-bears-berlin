@@ -35,6 +35,24 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://thebearsberlin.com" />
 
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://customer-64sz73htfhb823gb.cloudflarestream.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/src/index.css" as="style">
+  <link rel="preload" href="/src/main.jsx" as="script">
+
+  <!-- Prefetch likely-to-be-needed resources -->
+  <link rel="prefetch" href="/src/components/PageLoader.jsx">
+  <link rel="prefetch" href="/src/hooks/usePageLoader.js">
+
+  <!-- Module preload for critical chunks -->
+  <link rel="modulepreload" href="/src/main.jsx">
+  <link rel="modulepreload" href="/src/App.jsx">
+
   <!-- Additional SEO Meta Tags -->
   <meta name="theme-color" content="#B66613" />
   <meta name="msapplication-TileColor" content="#B66613" />

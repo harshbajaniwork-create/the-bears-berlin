@@ -1,12 +1,57 @@
-import { useMemo, useState, useCallback, useEffect, Suspense } from "react";
+import {
+  useMemo,
+  useState,
+  useCallback,
+  useEffect,
+  Suspense,
+  lazy,
+  useRef,
+} from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { BalloonModel } from "./Balloon";
-import { OutdoorSittingModel } from "./outdoor-sitting";
+
+// Lazy load heavy 3D models to improve initial bundle size
+const BalloonModel = lazy(() =>
+  import("./Balloon").then((module) => ({ default: module.BalloonModel }))
+);
+const OutdoorSittingModel = lazy(() =>
+  import("./outdoor-sitting").then((module) => ({
+    default: module.OutdoorSittingModel,
+  }))
+);
 
 const modelComponentsMap = {
   "outdoor-sitting": OutdoorSittingModel,
   balloon: BalloonModel,
+};
+
+// Intersection Observer for lazy loading
+const useIntersectionObserver = (ref, options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+        ...options,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [ref, options]);
+
+  return isIntersecting;
 };
 
 // Loading fallback component (for Canvas)
@@ -47,6 +92,22 @@ const ThreeDModelCard = ({
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const containerRef = useRef(null);
+
+  // Use intersection observer for lazy loading
+  const isInView = useIntersectionObserver(containerRef);
+
+  // Only start loading when in view
+  useEffect(() => {
+    if (isInView && !shouldLoad) {
+      // Add small delay to prevent loading during scroll
+      const timer = setTimeout(() => {
+        setShouldLoad(true);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, shouldLoad]);
 
   const ModelComp = useMemo(() => modelComponentsMap[modelKey], [modelKey]);
 
@@ -72,6 +133,7 @@ const ThreeDModelCard = ({
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full rounded-lg bg-gray-100 dark:bg-gray-800"
       style={{ height, minHeight: height }}
       onMouseEnter={() => setIsHovering(true)}
@@ -83,6 +145,13 @@ const ThreeDModelCard = ({
     >
       {hasError ? (
         <ModelError />
+      ) : !shouldLoad ? (
+        <div className="flex items-center justify-center h-full text-gray-500">
+          <div className="text-center">
+            <div className="text-2xl mb-2">🎯</div>
+            <div className="text-sm">3D Model</div>
+          </div>
+        </div>
       ) : isLoading ? (
         <ModelLoader />
       ) : (

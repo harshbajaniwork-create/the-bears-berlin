@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ThreeDModelCard from "./ThreeDModelCard";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,30 +39,31 @@ const ProfessionalGallery = ({ items = [] }) => {
 
       if (galleryItems.length === 0) return;
 
-      // Set initial state
+      // Set initial state using transforms to avoid reflows
       gsap.set(galleryItems, {
         opacity: 0,
-        y: 60,
-        scale: 0.95,
+        transform: "translateY(60px) scale(0.95)",
+        willChange: "transform, opacity",
       });
 
       // Create new ScrollTrigger instance
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top 70%",
-        onEnter: () => {
+        onUpdate: () => {
           gsap.to(galleryItems, {
             opacity: 1,
-            y: 0,
-            scale: 1,
+            transform: "translateY(0px) scale(1)",
             duration: 0.8,
             stagger: 0.1,
             ease: "power3.out",
+            clearProps: "willChange",
           });
         },
         onLeave: () => {
           gsap.to(galleryItems, {
             opacity: 0,
+            transform: "translateY(60px) scale(0.95)",
             y: 60,
             scale: 0.95,
             duration: 0.4,

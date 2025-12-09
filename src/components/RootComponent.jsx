@@ -4,7 +4,8 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import GlobalCursorProvider from "./GlobalCursorProvider";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
+import PageLoader from "./PageLoader";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -59,7 +60,9 @@ const RootComponent = () => {
           <ParallaxProvider>
             <Header />
             <main>
-              <Outlet />
+              <Suspense fallback={<PageLoader isLoading={true} />}>
+                <Outlet />
+              </Suspense>
             </main>
           </ParallaxProvider>
         </div>

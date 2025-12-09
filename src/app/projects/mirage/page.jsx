@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { projects } from "../../../constants";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const MirageProject = () => {
   const project = projects.find((p) => p.id === "mirage");
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([contentLoaded], 1150);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 550);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         {/* Main container with max-width constraint */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
@@ -204,7 +217,7 @@ const MirageProject = () => {
           nextProject="/projects/le-wagon"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

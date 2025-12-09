@@ -1,11 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { projects } from "../../../constants";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const NikeSp24Project = () => {
   const project = projects.find((p) => p.id === "nike-sp24");
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([contentLoaded], 1250);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 650);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleIframeMouseEnter = () => {
@@ -31,7 +44,7 @@ const NikeSp24Project = () => {
   }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         {/* Main container with max-width constraint */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
@@ -237,7 +250,7 @@ const NikeSp24Project = () => {
           nextProject="/projects/zalando-nike"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

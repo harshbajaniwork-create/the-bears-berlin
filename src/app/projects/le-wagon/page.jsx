@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { projects } from "../../../constants";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { useMediaQuery } from "react-responsive";
 import Iphone16Mockup from "../../../components/iPhone16";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const LeWagonProject = () => {
   const project = projects.find((p) => p.id === "le-wagon");
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([contentLoaded], 1200);
+
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Build array of all media items with their types
   const getMediaItems = () => {
@@ -52,7 +66,7 @@ const LeWagonProject = () => {
   const phonesToShow = getPhonesToShow();
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section */}
@@ -213,7 +227,7 @@ const LeWagonProject = () => {
           nextProject="/projects/manana"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

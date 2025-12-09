@@ -4,6 +4,8 @@ import ProfessionalGallery from "../../../components/ProfessionalGallery";
 import { threeDItems } from "../../../constants";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 function shuffleStable(list) {
   // Fisher–Yates shuffle, run once per mount via useMemo
@@ -17,6 +19,10 @@ function shuffleStable(list) {
 
 const ThreeDProject = () => {
   const [isPageReady, setIsPageReady] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([isPageReady, contentLoaded], 1500);
+
   // Shuffle items once to avoid category clustering per lane
   const shuffledItems = useMemo(() => shuffleStable(threeDItems), []);
 
@@ -26,11 +32,18 @@ const ThreeDProject = () => {
       setIsPageReady(true);
     }, 100);
 
-    return () => clearTimeout(timer);
+    const contentTimer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(contentTimer);
+    };
   }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section (consistent with other projects) */}
@@ -67,7 +80,7 @@ const ThreeDProject = () => {
           nextProject="/projects/nike-jilou"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

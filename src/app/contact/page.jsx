@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 import { sendContactEmail } from "../../services/nodemailerService";
 import { useMutation } from "@tanstack/react-query";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import PageLoader from "../../components/PageLoader";
+import { usePageLoader } from "../../hooks/usePageLoader";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +18,18 @@ const Contact = () => {
 
   const [missingFields, setMissingFields] = useState([]);
   const [hCaptchaToken, setHCaptchaToken] = useState(null);
+  const [contentLoaded, setContentLoaded] = useState(false);
   const hCaptchaRef = useRef(null);
+
+  const { isLoading } = usePageLoader([contentLoaded], 1000);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // TanStack Query mutation for sending contact email
   const contactMutation = useMutation({
@@ -109,7 +122,7 @@ const Contact = () => {
   };
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <ScrollSmoothProvider>
         <section className="dark:bg-[#4f473c] bg-[#cdccba] min-h-screen flex flex-col justify-center items-center w-full">
           {/* Main content container with max-width constraint */}
@@ -324,7 +337,7 @@ const Contact = () => {
           </div>
         </section>
       </ScrollSmoothProvider>
-    </>
+    </PageLoader>
   );
 };
 

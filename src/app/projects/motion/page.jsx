@@ -1,12 +1,27 @@
+import { useState, useEffect } from "react";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import MotionGallery from "../../../components/MotionGallery";
 import { motionGallery } from "../../../constants";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const MotionProject = () => {
   const items = motionGallery;
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([contentLoaded], 1300);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section (consistent with other projects) */}
@@ -40,7 +55,7 @@ const MotionProject = () => {
           nextProject="/projects/3d"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

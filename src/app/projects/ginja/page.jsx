@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { projects } from "../../../constants";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { Canvas } from "@react-three/fiber";
@@ -9,9 +9,19 @@ import { Model as GinjaModel3 } from "./components/Ginja-3";
 import { useMousePosition } from "../../../components/useMousePosition";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const GinjaProject = () => {
   const project = projects.find((p) => p.id === "ginja");
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader(
+    [imagesLoaded, contentLoaded, modelsLoaded],
+    1600
+  );
 
   // Refs for each canvas container
   const canvasRef1 = useRef();
@@ -39,6 +49,40 @@ const GinjaProject = () => {
   } = useMousePosition(canvasRef3);
 
   useEffect(() => {
+    // Track image loading
+    const images = document.querySelectorAll("img");
+    let loadedCount = 0;
+
+    const checkAllImagesLoaded = () => {
+      loadedCount++;
+      if (loadedCount === images.length) {
+        setImagesLoaded(true);
+      }
+    };
+
+    images.forEach((img) => {
+      if (img.complete) {
+        checkAllImagesLoaded();
+      } else {
+        img.addEventListener("load", checkAllImagesLoaded);
+        img.addEventListener("error", checkAllImagesLoaded);
+      }
+    });
+
+    // If no images, mark as loaded
+    if (images.length === 0) {
+      setImagesLoaded(true);
+    }
+
+    // Content and 3D models loading timers
+    const contentTimer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 900);
+
+    const modelsTimer = setTimeout(() => {
+      setModelsLoaded(true);
+    }, 1200);
+
     const handleIframeMouseEnter = () => {
       document.body.style.cursor = "default";
     };
@@ -54,6 +98,12 @@ const GinjaProject = () => {
     });
 
     return () => {
+      clearTimeout(contentTimer);
+      clearTimeout(modelsTimer);
+      images.forEach((img) => {
+        img.removeEventListener("load", checkAllImagesLoaded);
+        img.removeEventListener("error", checkAllImagesLoaded);
+      });
       iframes.forEach((iframe) => {
         iframe.removeEventListener("mouseenter", handleIframeMouseEnter);
         iframe.removeEventListener("mouseleave", handleIframeMouseLeave);
@@ -62,7 +112,7 @@ const GinjaProject = () => {
   }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
           {/* Header Section */}
@@ -321,7 +371,7 @@ const GinjaProject = () => {
           nextProject="/projects/motion"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

@@ -1,37 +1,58 @@
 import { Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 import BasicBear from "../../components/BasicBear";
+import PageLoader from "../../components/PageLoader";
+import { usePageLoader } from "../../hooks/usePageLoader";
 
 const Home = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "The Bears Berlin",
-    description:
-      "Full-service digital agency based in Berlin offering integrated marketing and creative solutions across digital, social, content, design, and development.",
-    url: "https://thebearsberlin.com",
-    logo: "https://thebearsberlin.com/favicon.webp",
-    foundingDate: "2022",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Berlin",
-      addressCountry: "Germany",
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "52.5200",
-        longitude: "13.4050",
-      },
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      email: "Info@thebearsberlin.com",
-      contactType: "customer service",
-    },
-    sameAs: ["https://www.linkedin.com/company/the-bears-berlin/"],
-  };
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [bearLoaded, setBearLoaded] = useState(false);
+
+  const { isLoading } = usePageLoader([imagesLoaded, bearLoaded], 1500);
+
+  useEffect(() => {
+    // Track image loading
+    const images = document.querySelectorAll("img");
+    let loadedCount = 0;
+
+    const checkAllImagesLoaded = () => {
+      loadedCount++;
+      if (loadedCount === images.length) {
+        setImagesLoaded(true);
+      }
+    };
+
+    images.forEach((img) => {
+      if (img.complete) {
+        checkAllImagesLoaded();
+      } else {
+        img.addEventListener("load", checkAllImagesLoaded);
+        img.addEventListener("error", checkAllImagesLoaded);
+      }
+    });
+
+    // If no images, mark as loaded
+    if (images.length === 0) {
+      setImagesLoaded(true);
+    }
+
+    // Simulate bear component loading
+    const bearTimer = setTimeout(() => {
+      setBearLoaded(true);
+    }, 800);
+
+    return () => {
+      clearTimeout(bearTimer);
+      images.forEach((img) => {
+        img.removeEventListener("load", checkAllImagesLoaded);
+        img.removeEventListener("error", checkAllImagesLoaded);
+      });
+    };
+  }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <ScrollSmoothProvider>
         <main className="bg-white dark:bg-black min-h-screen pt-20 relative">
           {/* Main content container - full viewport height minus header */}
@@ -135,7 +156,7 @@ const Home = () => {
           </footer>
         </main>
       </ScrollSmoothProvider>
-    </>
+    </PageLoader>
   );
 };
 

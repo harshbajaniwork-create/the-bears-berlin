@@ -1,15 +1,50 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { projects } from "../../../constants";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import { useMediaQuery } from "react-responsive";
+import PageLoader from "../../../components/PageLoader";
+import { usePageLoader } from "../../../hooks/usePageLoader";
 
 const AfroHealthProject = () => {
   const project = projects.find((p) => p.id === "afrohealth");
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
 
+  const { isLoading } = usePageLoader([imagesLoaded, contentLoaded], 1400);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
+    // Track image loading
+    const images = document.querySelectorAll("img");
+    let loadedCount = 0;
+
+    const checkAllImagesLoaded = () => {
+      loadedCount++;
+      if (loadedCount === images.length) {
+        setImagesLoaded(true);
+      }
+    };
+
+    images.forEach((img) => {
+      if (img.complete) {
+        checkAllImagesLoaded();
+      } else {
+        img.addEventListener("load", checkAllImagesLoaded);
+        img.addEventListener("error", checkAllImagesLoaded);
+      }
+    });
+
+    // If no images, mark as loaded
+    if (images.length === 0) {
+      setImagesLoaded(true);
+    }
+
+    // Content loading timer
+    const contentTimer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 800);
+
     const handleIframeMouseEnter = () => {
       document.body.style.cursor = "default";
     };
@@ -25,6 +60,11 @@ const AfroHealthProject = () => {
     });
 
     return () => {
+      clearTimeout(contentTimer);
+      images.forEach((img) => {
+        img.removeEventListener("load", checkAllImagesLoaded);
+        img.removeEventListener("error", checkAllImagesLoaded);
+      });
       iframes.forEach((iframe) => {
         iframe.removeEventListener("mouseenter", handleIframeMouseEnter);
         iframe.removeEventListener("mouseleave", handleIframeMouseLeave);
@@ -33,7 +73,7 @@ const AfroHealthProject = () => {
   }, []);
 
   return (
-    <>
+    <PageLoader isLoading={isLoading}>
       <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
         {/* Main container with max-width constraint */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-16 pt-20 sm:pt-32 md:pt-40">
@@ -195,7 +235,7 @@ const AfroHealthProject = () => {
           nextProject="/projects/ginja"
         />
       </main>
-    </>
+    </PageLoader>
   );
 };
 

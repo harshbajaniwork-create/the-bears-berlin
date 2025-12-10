@@ -132,56 +132,42 @@ const AboutDesktop = () => {
         scrollTrigger: {
           trigger: section4Ref.current,
           start: "top top",
-          end: "+=200%", // Extended scroll area
-          scrub: 1, // Smooth scrubbing
-          pin: true, // Pin the section while animating
+          end: "+=200%",
+          scrub: 1,
+          pin: true,
           anticipatePin: 1,
         },
       });
 
-      // Phase 1: Highlight "Wild results" and show left text
-      tl.to(wildResultsRef.current, {
-        duration: 0.3,
-      })
-        .fromTo(
-          leftTextRef.current,
-          {
-            opacity: 0,
-            x: -100,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          "<0.2" // Start slightly after wild results highlight
-        )
+      // Phase 1: Show left text
+      tl.fromTo(
+        leftTextRef.current,
+        {
+          opacity: 0,
+          x: -50,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      )
         // Hold the left text visible
         .to({}, { duration: 0.5 })
-        // Phase 2: Fade out left text, remove wild results highlight
+        // Phase 2: Fade out left text
         .to(leftTextRef.current, {
           opacity: 0,
-          x: -100,
+          x: -50,
           duration: 0.4,
           ease: "power2.in",
         })
-        .to(
-          wildResultsRef.current,
-          {
-            duration: 0.3,
-          },
-          "<"
-        )
-        // Phase 3: Highlight "teddy care" and show right text
-        .to(teddyCareRef.current, {
-          duration: 0.3,
-        })
+        // Phase 3: Show right text
         .fromTo(
           rightTextRef.current,
           {
             opacity: 0,
-            x: 100,
+            x: 50,
           },
           {
             opacity: 1,
@@ -346,77 +332,80 @@ const AboutDesktop = () => {
       {/* Section 4 - Wild Results */}
       <section
         ref={section4Ref}
-        className="min-h-screen flex items-center relative z-20 px-4 md:px-6 py-16 md:py-0"
+        className="min-h-screen flex items-center relative z-20 px-4 md:px-6 lg:px-8 py-16 md:py-0"
       >
-        <div className="container mx-auto w-full relative">
-          {/* Top heading */}
-          <div className="sm:text-center text-left flex flex-col gap-3 md:gap-4 relative">
-            <h2
-              ref={wildResultsRef}
-              className="font-semibold text-5xl md:text-6xl lg:text-[90px] text-black dark:text-[#CDCBBC] hover:text-[#B66613] leading-[0.9] mb-2 md:mb-4"
+        <div className="container mx-auto w-full max-w-[1920px] relative">
+          {/* Grid layout for better responsiveness */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left side text (Wild Results related) - Desktop */}
+            <div
+              ref={leftTextRef}
+              className="hidden lg:block lg:col-span-4 xl:col-span-3 opacity-0"
             >
-              Wild results,
-            </h2>
-            <h2
-              ref={wrappedRef}
-              className="font-semibold text-5xl md:text-6xl lg:text-[90px] text-black dark:text-[#CDCBBC] leading-[0.9]"
-            >
-              wrapped
-            </h2>
-            <h2
-              ref={teddyCareRef}
-              className="font-semibold text-5xl md:text-6xl lg:text-[90px] text-black dark:text-[#CDCBBC] hover:text-[#B66613] leading-[0.9]"
-            >
-              in teddy care.
-            </h2>
-          </div>
-
-          {/* Left side text (Wild Results related) - Desktop */}
-          <div
-            ref={leftTextRef}
-            className="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 max-w-md opacity-0"
-          >
-            <div className="flex gap-2 w-full text-black dark:text-[#CDCBBC] mr-20 mt-0">
-              <div>
-                <p className="text-[21px] font-medium leading-relaxed">
-                  In a world where everyone has access to the same AI tools and
-                  everything starts to look the same, authenticity is what sets
-                  a brand apart.
-                </p>
-                <p className="text-[21px] font-medium leading-relaxed mt-4">
-                  We build marketing that goes beyond templates. Every campaign,
-                  every post, every touchpoint is built to resonate and deliver
-                  results, not just noise.
-                </p>
-              </div>
-              <div className="mt-6">
-                <FaArrowRightLong className="scale-200 size-8 ml-5" />
+              <div className="flex gap-3 xl:gap-4 items-start text-black dark:text-[#CDCBBC]">
+                <div className="flex-1">
+                  <p className="text-base xl:text-lg 2xl:text-[21px] font-medium leading-relaxed">
+                    In a world where everyone has access to the same AI tools
+                    and everything starts to look the same, authenticity is what
+                    sets a brand apart.
+                  </p>
+                  <p className="text-base xl:text-lg 2xl:text-[21px] font-medium leading-relaxed mt-4">
+                    We build marketing that goes beyond templates. Every
+                    campaign, every post, every touchpoint is built to resonate
+                    and deliver results, not just noise.
+                  </p>
+                </div>
+                <div className="flex-shrink-0 mt-4">
+                  <FaArrowRightLong className="w-6 h-6 xl:w-8 xl:h-8" />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right side text (Teddy Care related) - Desktop */}
-          <div
-            ref={rightTextRef}
-            className="hidden md:block absolute right-0 top-[85%] transform -translate-y-1/2 max-w-md opacity-0"
-          >
-            <div className="text-black dark:text-[#CDCBBC] mt-60 ml-20 flex">
-              <div className="mt-4 mr-10">
-                <FaArrowLeftLong className="scale-200 size-8 -ml-10" />
-              </div>
-              <div>
-                <p className="text-[21px] font-medium leading-relaxed">
-                  Our teddies are trained to care, and they work closely with
-                  your team to identify pain points and understand what matters.
-                  They work relentlessly behind the scenes, so you can take a
-                  moment to breathe, knowing we've got it covered.
-                </p>
+            {/* Center heading */}
+            <div className="lg:col-span-4 xl:col-span-6 text-center flex flex-col gap-2 md:gap-3 lg:gap-4">
+              <h2
+                ref={wildResultsRef}
+                className="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[90px] text-black dark:text-[#CDCBBC] hover:text-[#B66613] leading-[0.9] transition-colors duration-300"
+              >
+                Wild results,
+              </h2>
+              <h2
+                ref={wrappedRef}
+                className="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[90px] text-black dark:text-[#CDCBBC] leading-[0.9]"
+              >
+                wrapped
+              </h2>
+              <h2
+                ref={teddyCareRef}
+                className="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[90px] text-black dark:text-[#CDCBBC] hover:text-[#B66613] leading-[0.9] transition-colors duration-300"
+              >
+                in teddy care.
+              </h2>
+            </div>
+
+            {/* Right side text (Teddy Care related) - Desktop */}
+            <div
+              ref={rightTextRef}
+              className="hidden lg:block lg:col-span-4 xl:col-span-3 opacity-0"
+            >
+              <div className="flex gap-3 xl:gap-4 items-start text-black dark:text-[#CDCBBC]">
+                <div className="flex-shrink-0 mt-4">
+                  <FaArrowLeftLong className="w-6 h-6 xl:w-8 xl:h-8" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-base xl:text-lg 2xl:text-[21px] font-medium leading-relaxed">
+                    Our teddies are trained to care, and they work closely with
+                    your team to identify pain points and understand what
+                    matters. They work relentlessly behind the scenes, so you
+                    can take a moment to breathe, knowing we've got it covered.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Mobile - Static text below heading */}
-          <div className="md:hidden mt-12 space-y-8">
+          <div className="lg:hidden mt-12 space-y-8">
             <div className="text-black dark:text-[#CDCBBC]">
               <h3 className="text-xl font-semibold mb-4 text-black dark:text-[#CDCBBC]">
                 Wild results

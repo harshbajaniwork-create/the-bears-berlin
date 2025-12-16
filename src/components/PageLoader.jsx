@@ -16,38 +16,12 @@ const PageLoader = ({ isLoading = true, children }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          THE BEARS BERLIN
+          <img
+            src="/footerLogo.webp"
+            alt="logo"
+            className="w-96 h-96 object-contain dark:invert"
+          />
         </motion.div>
-
-        {/* Loading Animation */}
-        <div className="flex space-x-2">
-          {[0, 1, 2].map((index) => (
-            <motion.div
-              key={index}
-              className="w-3 h-3 bg-black dark:bg-white rounded-full"
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1.2,
-                repeat: Infinity,
-                delay: index * 0.2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Loading Text */}
-        <motion.p
-          className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium tracking-wider"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          LOADING EXPERIENCE...
-        </motion.p>
       </div>
 
       {/* Progress Bar */}

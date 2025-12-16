@@ -303,7 +303,7 @@ const AboutDesktop = () => {
                 sense of confidence, comfort, and love.
               </p>{" "}
               <p className="text-lg md:text-[21px] font-medium text-black dark:text-[#CDCBBC] text-left pt-2">
-                We didn’t think of it as a luxury.
+                We didn't think of it as a luxury.
               </p>{" "}
               <p className="text-lg md:text-[21px] font-medium text-black dark:text-[#CDCBBC] text-left pt-2">
                 {" "}
@@ -313,15 +313,15 @@ const AboutDesktop = () => {
                 For businesses, marketing is exactly that.
               </p>{" "}
               <p className="text-lg md:text-[21px] font-medium text-black dark:text-[#CDCBBC] text-left pt-2">
-                It’s not an add-on and a nice-to-have. It’s what shapes how
-                people see you, remember you, and choose you. It’s what gives
+                It's not an add-on and a nice-to-have. It's what shapes how
+                people see you, remember you, and choose you. It's what gives
                 your brand a place in a world full of noise. Without marketing,
                 even the best ideas risk going unnoticed.
               </p>
               <p className="text-lg md:text-[21px] font-medium text-black dark:text-[#CDCBBC] text-left pt-2">
                 The Bears Berlin was born out of the idea that no brand should
                 grow up without that support. Because behind every iconic name
-                is a story, a strategy, and a community, and that’s what we
+                is a story, a strategy, and a community, and that's what we
                 craft.
               </p>
             </div>
@@ -336,13 +336,13 @@ const AboutDesktop = () => {
       >
         <div className="container mx-auto w-full max-w-[1920px] relative">
           {/* Grid layout for better responsiveness */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left side text (Wild Results related) - Desktop */}
             <div
               ref={leftTextRef}
               className="hidden lg:block lg:col-span-4 xl:col-span-3 opacity-0"
             >
-              <div className="flex gap-3 xl:gap-4 items-start text-black dark:text-[#CDCBBC]">
+              <div className="flex gap-3 xl:gap-4 text-black dark:text-[#CDCBBC]">
                 <div className="flex-1">
                   <p className="text-base xl:text-lg 2xl:text-[21px] font-medium leading-relaxed">
                     In a world where everyone has access to the same AI tools
@@ -355,7 +355,7 @@ const AboutDesktop = () => {
                     and deliver results, not just noise.
                   </p>
                 </div>
-                <div className="flex-shrink-0 mt-4">
+                <div className="flex-shrink-0">
                   <FaArrowRightLong className="w-6 h-6 xl:w-8 xl:h-8" />
                 </div>
               </div>
@@ -388,8 +388,8 @@ const AboutDesktop = () => {
               ref={rightTextRef}
               className="hidden lg:block lg:col-span-4 xl:col-span-3 opacity-0"
             >
-              <div className="flex gap-3 xl:gap-4 items-start text-black dark:text-[#CDCBBC]">
-                <div className="flex-shrink-0 mt-4">
+              <div className="flex gap-3 xl:gap-4 text-black dark:text-[#CDCBBC]">
+                <div className="flex-shrink-0">
                   <FaArrowLeftLong className="w-6 h-6 xl:w-8 xl:h-8" />
                 </div>
                 <div className="flex-1">

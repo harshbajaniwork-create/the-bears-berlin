@@ -15,36 +15,13 @@ const ProjectClientMarquee = () => {
     });
   }, [controls]);
 
-  const handleDragStart = () => {
-    controls.stop(); // pause animation on touch/drag
-  };
-
-  const handleDragEnd = () => {
-    // resume marquee after drag ends
-    controls.start({
-      x: ["0%", "-100%"],
-      transition: {
-        duration: 40,
-        repeat: Infinity,
-        ease: "linear",
-      },
-    });
-  };
-
   return (
     <div className="w-full py-8 bg-transparent overflow-hidden">
       <div className="relative">
         {/* First Row - Moving Left */}
-        <div className="flex overflow-hidden mb-4">
+        <div className="flex overflow-hidden mb-4 pointer-events-none">
           {/* First copy */}
-          <motion.div
-            className="flex-shrink-0 cursor-grab active:cursor-grabbing"
-            animate={controls}
-            drag="x"
-            dragConstraints={{ left: -200, right: 200 }}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
+          <motion.div className="flex-shrink-0" animate={controls}>
             <img
               src="/new-logos/logo.webp"
               alt="Client logos"
@@ -54,14 +31,7 @@ const ProjectClientMarquee = () => {
           </motion.div>
 
           {/* Second copy for seamless loop */}
-          <motion.div
-            className="flex-shrink-0 cursor-grab active:cursor-grabbing"
-            animate={controls}
-            drag="x"
-            dragConstraints={{ left: -200, right: 200 }}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
+          <motion.div className="flex-shrink-0" animate={controls}>
             <img
               src="/new-logos/logo.webp"
               alt="Client logos"
@@ -71,14 +41,7 @@ const ProjectClientMarquee = () => {
           </motion.div>
 
           {/* Third copy to ensure coverage */}
-          <motion.div
-            className="flex-shrink-0 cursor-grab active:cursor-grabbing"
-            animate={controls}
-            drag="x"
-            dragConstraints={{ left: -200, right: 200 }}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
+          <motion.div className="flex-shrink-0" animate={controls}>
             <img
               src="/new-logos/logo.webp"
               alt="Client logos"

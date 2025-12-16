@@ -6,56 +6,56 @@ const trianglesDesktop = [
   {
     id: 0,
     width: 400,
-    height: 600,
+    height: 346, // height = width * Math.sqrt(3)/2 for equilateral
     blur: 80,
-    position: { x: "8%", y: "1%" }, // Top-left
+    position: { x: "8%", y: "1%" },
     range: 150,
     rotation: 35,
-    clipPath: "polygon(0% 0%, 100% 0%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 1,
   },
   {
     id: 1,
     width: 450,
-    height: 700,
+    height: 390,
     blur: 90,
-    position: { x: "8%", y: "60%" }, // Top-right
+    position: { x: "8%", y: "60%" },
     range: 160,
     rotation: -25,
-    clipPath: "polygon(100% 0%, 100% 100%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 2,
   },
   {
     id: 2,
     width: 500,
-    height: 350,
+    height: 433,
     blur: 95,
-    position: { x: "70%", y: "1%" }, // Center
+    position: { x: "70%", y: "1%" },
     range: 180,
     rotation: 10,
-    clipPath: "polygon(0% 0%, 100% 0%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 3,
   },
   {
     id: 3,
     width: 420,
-    height: 650,
+    height: 364,
     blur: 85,
-    position: { x: "50%", y: "8%" }, // Bottom-left
+    position: { x: "50%", y: "8%" },
     range: 120,
     rotation: -70,
-    clipPath: "polygon(0% 0%, 100% 100%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 4,
   },
   {
     id: 4,
     width: 480,
-    height: 720,
+    height: 416,
     blur: 88,
-    position: { x: "90%", y: "50%" }, // Bottom-right
+    position: { x: "90%", y: "50%" },
     range: 170,
     rotation: 190,
-    clipPath: "polygon(100% 0%, 100% 100%, 0% 0%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 5,
   },
 ];
@@ -65,34 +65,34 @@ const trianglesMobile = [
   {
     id: 0,
     width: 350,
-    height: 350,
+    height: 303,
     blur: 45,
-    position: { x: "15%", y: "12%" }, // Top-left
+    position: { x: "15%", y: "12%" },
     range: 80,
     rotation: 50,
-    clipPath: "polygon(0% 0%, 100% 0%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 1,
   },
   {
     id: 2,
     width: 250,
-    height: 250,
+    height: 217,
     blur: 50,
-    position: { x: "50%", y: "48%" }, // Center
+    position: { x: "50%", y: "48%" },
     range: 100,
     rotation: 0,
-    clipPath: "polygon(100% 0%, 100% 100%, 0% 100%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 2,
   },
   {
     id: 4,
     width: 350,
-    height: 350,
+    height: 303,
     blur: 48,
-    position: { x: "10%", y: "62%" }, // Bottom-right
+    position: { x: "10%", y: "62%" },
     range: 90,
     rotation: 140,
-    clipPath: "polygon(100% 0%, 100% 100%, 0% 0%)",
+    clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", // Equilateral pointing up
     zIndex: 3,
   },
 ];

@@ -157,7 +157,7 @@ const FableticsProject = () => {
                 </h2>
               </div>
               <div>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed mb-6">
                   We prioritized authenticity, selecting influencers whose brand
                   fit, audience demographics, and community engagement aligned
                   with Fabletics’, at the same time ensuring we reach key

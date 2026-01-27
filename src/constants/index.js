@@ -324,7 +324,7 @@ export const projects = [
     projectDescription:
       "We prioritized authenticity, selecting influencers whose brand fit, audience demographics, and community engagement aligned with Fabletics’, at the same time ensuring we reach key performance KPIs. Each collaboration was approached with the focus on engaging storytelling, authentic product integration, and long-term relationships. The goal was to ensure every campaign felt natural to the creator’s lifestyle while delivering measurable brand impact. By leveraging new collections and exclusive pieces from collaborators like Kevin Hart and Khloé Kardashian, we tapped into the aspirational pull of Fabletics and created high-impact content that successfully captivated new audiences, drove conversation, built a sense of exclusivity and belonging around the brand.",
     finalDescription:
-      "In a market full of fitness wolves, we helped Fabletics expand its territory, growing influence, community, and business in the digital wild. The campaigns brought tangible results, with returns of up to 12x ROI, proving that when the right ambassador meets authentic storytelling, it’s a win – even in the wildest jungle.",
+      "In a market full of fitness wolves, we helped Fabletics expand its territory, growing influence, community, and business in the digital wild. The campaigns brought tangible results, proving that when the right ambassador meets authentic storytelling, it’s a win – even in the wildest jungle.",
     videos: [
       "a3cff55cd638cadd8e08656f27081541",
       "39cdc6cb1bab4dd1cfeb92ab811e7789",
@@ -392,7 +392,7 @@ export const projects = [
     industry: "Food & Beverage (FMCG)",
     year: "2025",
     tagline:
-      "Ginja Foods is a Berlin-based start-up that rethinks the ready-meal space by bringing pre-made Congee, A traditional Asian rice porridge  to the European market. In its early launch phase, with the product not yet in production, our task was to turn an idea into something people could see, feel, and believe in.",
+      "Ginja Foods is a Berlin-based start-up that rethinks the ready-meal space by bringing pre-made Congee, a traditional Asian rice porridge, to the European market.",
     projectDescription:
       "We created a visual foundation for the launch through 3D product design and motion assets and turned concept into reality. Each visual was built to reflect the product’s essence: warm, nourishing, simple, yet elevated. We paid close attention to texture, light, and atmosphere, creating visuals that looked as real and appetising as the dish itself.",
     finalDescription:

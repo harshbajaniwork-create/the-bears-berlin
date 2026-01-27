@@ -204,14 +204,11 @@ const MananaProject = () => {
               <div className="space-y-4">
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
                   The new identity struck a chord with MAÑANA’s audience,
-                  leading to strong and steady organic growth. Within the first
-                  month after launch, over 1,600 new followers joined the
-                  community, driven purely by authentic engagement and word of
-                  mouth.
+                  leading to strong and steady organic growth. This growth
+                  proved that the brand's visual and editorial language truly
+                  resonated with Buenos Aires’ creative crowd.
                 </p>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
-                  This growth proved that the brand’s visual and editorial
-                  language truly resonated with Buenos Aires’ creative crowd.
                   More than visibility, it built a community, and found its
                   distinctive voice in the wilderness of the digital world.
                 </p>

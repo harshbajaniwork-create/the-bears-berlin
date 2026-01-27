@@ -262,7 +262,7 @@ const NikeJilouProject = () => {
         )}
         <ProjectFooter
           prevProject="/projects/3d"
-          nextProject="/projects/nike-sp24"
+          nextProject="/projects/nike-zalando"
         />
       </main>
     </PageLoader>

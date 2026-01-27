@@ -21,6 +21,7 @@ import MoodJungleAll from "../app/mood-jungle-all/page";
 import AfroHealthProject from "../app/projects/afrohealth/page";
 import MotionProject from "../app/projects/motion/page";
 import ZalandoNikeProject from "../app/projects/zalando-nike/page";
+import NikeZalandoProject from "../app/projects/nike-zalando/page";
 
 const rootRoute = new RootRoute({
   component: RootComponent,
@@ -76,6 +77,12 @@ const nikejilouProjectRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/projects/nike-jilou",
   component: NikeJilouProject,
+});
+
+const nikeZalandoProjectRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/projects/nike-zalando",
+  component: NikeZalandoProject,
 });
 
 const zalandoNikeProjectRoute = new Route({
@@ -166,6 +173,7 @@ const routeTree = rootRoute.addChildren([
   afrohealthProjectRoute,
   nikejilouProjectRoute,
   nikeSp24ProjectRoute,
+  nikeZalandoProjectRoute,
   zalandoNikeProjectRoute,
   mirageProjectRoute,
   brandPlacesProjectRoute,

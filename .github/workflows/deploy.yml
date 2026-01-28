@@ -1,0 +1,38 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main] # Or your production branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔄 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Match your project's version
+          cache: "npm"
+
+      - name: 📦 Install & Build
+        run: |
+          npm ci
+          npm run build # Generates ./dist
+
+      - name: 🚀 Deploy via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.HOSTINGER_SFTP_HOST }} # e.g., server123.hostinger.com
+          username: ${{ secrets.HOSTINGER_SFTP_USER }}
+          password: ${{ secrets.HOSTINGER_SFTP_PASS }}
+          port: 22
+          protocol: sftp
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          dangerous-clean-slate: true # ⚠️ SAFE ONLY IF .htaccess IS IN YOUR BUILD!
+          exclude: |
+            .git*
+            *.md

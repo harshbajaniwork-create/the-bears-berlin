@@ -192,7 +192,7 @@ export const projects = [
   },
   {
     id: "nike-zalando",
-    name: "Zalando x Nike Shox",
+    name: "Zalando x Nike",
     image: "/nike-zalando.jpg",
     logo: "/nike-logo.png",
     scopeOfWork: "Post-production",

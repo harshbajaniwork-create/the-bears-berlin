@@ -22,16 +22,16 @@ jobs:
           npm ci
           npm run build
 
-      - name: 🚀 Deploy via FTP (NOT SFTP!)
+      - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.HOSTINGER_FTP_HOST }} # JUST THE IP (e.g., 92.113.19.52)
-          username: ${{ secrets.HOSTINGER_FTP_USER }} # u235496307
-          password: ${{ secrets.HOSTINGER_FTP_PASS }} # Your FTP password
-          port: 21 # ⚠️ MUST BE 21 (FTP port), NOT 22
-          protocol: ftp # ⚠️ MUST BE "ftp", NOT "sftp"
+          server: ${{ secrets.HOSTINGER_FTP_HOST }} # MUST BE EXACTLY THIS
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASS }}
+          port: 21
+          protocol: ftp
           local-dir: ./dist/
-          server-dir: ./ # ⚠️ CRITICAL: Root = public_html (no extra path!)
+          server-dir: ./ # ⚠️ NO "public_html" HERE
           dangerous-clean-slate: true
           exclude: |
             .git*

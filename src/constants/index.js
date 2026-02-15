@@ -424,7 +424,7 @@ export const projects = [
   },
   {
     id: "motion",
-    name: "Film, Video & Motion",
+    name: "Content Production",
     image: "/motion.webp",
     logo: "/logos/motion.webp",
     scopeOfWork: "Film, Video & Motion",

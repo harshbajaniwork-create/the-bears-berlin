@@ -332,7 +332,7 @@ export const projects = [
       "454ed04eed01f9b826f04c7d81f0e4b2",
       "b912eda381a0236b89d1975afb403039",
       "dd2f1916451fdeeb562295db590299fa",
-      "3015a3f7f82a0f0323dd69f85b926302",
+      "b6aa394848d986102eda9eac9acd114d",
     ],
   },
   {

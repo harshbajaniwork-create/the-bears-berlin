@@ -1,11 +1,10 @@
 import { useMemo, useState, useEffect } from "react";
-import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProfessionalGallery from "../../../components/ProfessionalGallery";
-import { threeDItems } from "../../../constants";
-import { Link } from "@tanstack/react-router";
+
 import ProjectFooter from "../../../components/ProjectFooter";
 import PageLoader from "../../../components/PageLoader";
 import { usePageLoader } from "../../../hooks/usePageLoader";
+import { threeDItems } from "../index";
 
 function shuffleStable(list) {
   // Fisher–Yates shuffle, run once per mount via useMemo

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { moodJungleItems } from "../../../constants/index"; // Adjust path as needed
+import { moodJungleItems } from "../index.js"; // Adjust path as needed
 import AlternatingCardsSection from "./AlternatingCardsSection"; // Adjust path as needed
 
 // Register ScrollTrigger plugin

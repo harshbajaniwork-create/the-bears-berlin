@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { projects } from "../../constants";
+import { projects } from "./index";
 import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 import ProjectClientMarquee from "../../components/ProjectClientMarquee";
 import PageLoader from "../../components/PageLoader";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import { useMediaQuery } from "react-responsive";

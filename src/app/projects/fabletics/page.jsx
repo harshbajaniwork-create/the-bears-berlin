@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import Iphone16Mockup from "../../../components/iPhone16";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { useMediaQuery } from "react-responsive";
@@ -223,7 +223,7 @@ const FableticsProject = () => {
           </div>
         </div>
         <ProjectFooter
-          prevProject="/projects/manana"
+          prevProject="/projects/le-wagon"
           nextProject="/projects/afrohealth"
         />
       </main>

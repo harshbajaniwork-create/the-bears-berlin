@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import MotionGallery from "../../../components/MotionGallery";
-import { motionGallery } from "../../../constants";
+import { motionGallery } from "../index";
 import PageLoader from "../../../components/PageLoader";
 import { usePageLoader } from "../../../hooks/usePageLoader";
 

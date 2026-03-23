@@ -2,7 +2,6 @@ import { useMediaQuery } from "react-responsive";
 import { useState, useEffect } from "react";
 import ServicesDesktop from "./components/ServiceDesktop";
 import ServicesMobile from "./components/ServiceMobile";
-import ScrollSmoothProvider from "../../components/ScrollSmoothProvider";
 import PageLoader from "../../components/PageLoader";
 import { usePageLoader } from "../../hooks/usePageLoader";
 

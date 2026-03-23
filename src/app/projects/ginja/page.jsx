@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";

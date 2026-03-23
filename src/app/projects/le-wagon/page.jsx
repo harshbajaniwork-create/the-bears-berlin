@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import { useMediaQuery } from "react-responsive";
 import Iphone16Mockup from "../../../components/iPhone16";
@@ -224,7 +224,7 @@ const LeWagonProject = () => {
         </div>
         <ProjectFooter
           prevProject="/projects/mirage"
-          nextProject="/projects/manana"
+          nextProject="/projects/fabletics"
         />
       </main>
     </PageLoader>

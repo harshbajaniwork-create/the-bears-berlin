@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { projects } from "../../../constants";
+import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import PageLoader from "../../../components/PageLoader";

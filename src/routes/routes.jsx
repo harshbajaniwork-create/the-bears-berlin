@@ -109,11 +109,11 @@ const brandPlacesProjectRoute = new Route({
   component: LeWagonProject,
 });
 
-const mananaProjectRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: "/projects/manana",
-  component: MananaProject,
-});
+// const mananaProjectRoute = new Route({
+//   getParentRoute: () => rootRoute,
+//   path: "/projects/manana",
+//   component: MananaProject,
+// });
 
 const fableticsProjectRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -177,7 +177,7 @@ const routeTree = rootRoute.addChildren([
   zalandoNikeProjectRoute,
   mirageProjectRoute,
   brandPlacesProjectRoute,
-  mananaProjectRoute,
+  // mananaProjectRoute,
   fableticsProjectRoute,
   sinousSistersProjectRoute,
   ginjaFoodsProjectRoute,

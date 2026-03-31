@@ -97,11 +97,11 @@ const nikeSp24ProjectRoute = new Route({
   component: NikeSp24Project,
 });
 
-const mirageProjectRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: "/projects/mirage",
-  component: MirageProject,
-});
+// const mirageProjectRoute = new Route({
+//   getParentRoute: () => rootRoute,
+//   path: "/projects/mirage",
+//   component: MirageProject,
+// });
 
 const brandPlacesProjectRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -175,7 +175,7 @@ const routeTree = rootRoute.addChildren([
   nikeSp24ProjectRoute,
   nikeZalandoProjectRoute,
   zalandoNikeProjectRoute,
-  mirageProjectRoute,
+  // mirageProjectRoute,
   brandPlacesProjectRoute,
   // mananaProjectRoute,
   fableticsProjectRoute,

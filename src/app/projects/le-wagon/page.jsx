@@ -223,7 +223,7 @@ const LeWagonProject = () => {
           </div>
         </div>
         <ProjectFooter
-          prevProject="/projects/mirage"
+          prevProject="/projects/zalando-nike"
           nextProject="/projects/fabletics"
         />
       </main>

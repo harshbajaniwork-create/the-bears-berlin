@@ -23,30 +23,30 @@ export const projects = [
       "/product-images/jilou-6.webp",
     ],
   },
-  {
-    id: "nike-zalando",
-    name: "Zalando x Nike",
-    image: "/nike-zalando.jpg",
-    logo: "/nike-logo.png",
-    scopeOfWork: "Post-production",
-    industry: "Sport, Lifestyle, Fashion",
-    year: "2025",
-    tagline:
-      "Ahead of Breaking’s debut in Olympic Games, Nike launched a campaign celebrating Germany’s top breaker: B-Girl Jilou. The initiative marked a milestone for both sport and culture, placing a Berlin-based dancer and Nike into the global spotlight.",
-    projectDescription:
-      "The campaign spanned multiple channels, including social media, Nike online shop, Nike Training Club app (NTC), paid media, collaborations with such media outlets as Highsnobiety and Bravo and retail partners such as Zalando, influencer collaborations, as well as offline events. Our task was to craft a powerful 360° campaign overview that showcased the project’s scale and impact, while keeping it sharp and engaging.",
-    finalDescription:
-      "The film extended the night beyond the venue. While not everyone could experience the event in person, the story travelled further into the digital wild and expanded reach. We brought different scenes and energies onto the same path, shaping a cohesive narrative. The Nike Shox Z moved through it as a connecting thread, becoming a shared point of belonging across styles and communities. In the end, the film reflected the spirit of the Nike Shox Z itself: unapologetic, expressive, and carrying the viewer into a wilder, unfamiliar space.",
-    videos: ["602093996bbfdaa4fcfd5b2849fd5a33"],
-    productImages: [
-      "/product-images/nike-zalando-1.jpg",
-      "/product-images/nike-zalando-2.jpg",
-      "/product-images/nike-zalando-3.jpg",
-      "/product-images/nike-zalando-4.jpg",
-      "/product-images/nike-zalando-5.jpg",
-      "/product-images/nike-zalando-6.jpg",
-    ],
-  },
+  // {
+  //   id: "nike-zalando",
+  //   name: "Zalando x Nike",
+  //   image: "/nike-zalando.jpg",
+  //   logo: "/nike-logo.png",
+  //   scopeOfWork: "Post-production",
+  //   industry: "Sport, Lifestyle, Fashion",
+  //   year: "2025",
+  //   tagline:
+  //     "Ahead of Breaking’s debut in Olympic Games, Nike launched a campaign celebrating Germany’s top breaker: B-Girl Jilou. The initiative marked a milestone for both sport and culture, placing a Berlin-based dancer and Nike into the global spotlight.",
+  //   projectDescription:
+  //     "The campaign spanned multiple channels, including social media, Nike online shop, Nike Training Club app (NTC), paid media, collaborations with such media outlets as Highsnobiety and Bravo and retail partners such as Zalando, influencer collaborations, as well as offline events. Our task was to craft a powerful 360° campaign overview that showcased the project’s scale and impact, while keeping it sharp and engaging.",
+  //   finalDescription:
+  //     "The film extended the night beyond the venue. While not everyone could experience the event in person, the story travelled further into the digital wild and expanded reach. We brought different scenes and energies onto the same path, shaping a cohesive narrative. The Nike Shox Z moved through it as a connecting thread, becoming a shared point of belonging across styles and communities. In the end, the film reflected the spirit of the Nike Shox Z itself: unapologetic, expressive, and carrying the viewer into a wilder, unfamiliar space.",
+  //   videos: ["602093996bbfdaa4fcfd5b2849fd5a33"],
+  //   productImages: [
+  //     "/product-images/nike-zalando-1.jpg",
+  //     "/product-images/nike-zalando-2.jpg",
+  //     "/product-images/nike-zalando-3.jpg",
+  //     "/product-images/nike-zalando-4.jpg",
+  //     "/product-images/nike-zalando-5.jpg",
+  //     "/product-images/nike-zalando-6.jpg",
+  //   ],
+  // },
   {
     id: "nike-sp24",
     name: "Nike",

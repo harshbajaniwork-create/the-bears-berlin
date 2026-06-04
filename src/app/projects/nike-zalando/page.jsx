@@ -4,6 +4,7 @@ import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
 import ProjectFooter from "../../../components/ProjectFooter";
 import PageLoader from "../../../components/PageLoader";
 import { usePageLoader } from "../../../hooks/usePageLoader";
+import ProductHighlightsReel from "../../../components/ProductHighlightsReel";
 
 const NikeZalandoProject = () => {
   const project = projects.find((p) => p.id === "nike-zalando");
@@ -85,19 +86,7 @@ const NikeZalandoProject = () => {
               </div>
               <div className="lg:pt-24">
                 <p className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white leading-relaxed max-w-7xl mb-6">
-                  As part of its GEN SHOX event series, Nike x Zalando brought
-                  the format to Berlin to mark the launch of the Nike Shox Z.
-                  The new silhouette, introduced at the end of the year, marked
-                  a new chapter for Shox. Bold by design and unapologetic in
-                  attitude, it is a shoe that was never meant to please
-                  everyone, but to stand for self-expression and individuality.
-                </p>
-                <p className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white leading-relaxed max-w-7xl mb-40">
-                  That idea became the starting point for the GEN SHOX Berlin
-                  Edition, curated by Zalando x Nike as an experience built
-                  around the belief that style, like culture, does not exist in
-                  one shape. It moves through different scenes, rhythms, and
-                  communities.
+                  {project?.tagline}
                 </p>
               </div>
             </div>
@@ -158,24 +147,11 @@ const NikeZalandoProject = () => {
             </div>
           </div>
 
-          {project?.productImages && project.productImages.length > 0 && (
-            <div className="mb-6 md:mb-32 max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2  gap-4 md:gap-6 lg:gap-8">
-                {project.productImages.slice(0, 4).map((imageSrc, index) => (
-                  <div
-                    key={index}
-                    className="overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
-                  >
-                    <img
-                      src={imageSrc}
-                      alt={`${project.name} product ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      loading={index < 2 ? "eager" : "lazy"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+          {project?.productVideos && project.productVideos.length > 0 && (
+            <ProductHighlightsReel
+              videos={project.productVideos}
+              intro="Short product and moment cutdowns from the activation built for e-com tiles, social stories, and fast brand channels."
+            />
           )}
 
           {/* The Project Section */}
@@ -188,41 +164,11 @@ const NikeZalandoProject = () => {
               </div>
               <div>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed mb-6">
-                  GEN SHOX was designed as a three-part experience where genre
-                  became a feeling rather than a label. Hip-hop, electronic, and
-                  ballroom: worlds that usually orbit separately shared the same
-                  floor for one night.
-                </p>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
-                  Our role was to translate this unique experience into film. We
-                  followed the night from its first moments to its peak,
-                  focusing on faces, movement, and the energy created by people
-                  coming together and stepping into territory beyond familiar
-                  circles.
+                  {project?.projectDescription}
                 </p>
               </div>
             </div>
           </div>
-
-          {project?.productImages && project.productImages.length > 0 && (
-            <div className="mb-6 md:mb-32 max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2  gap-4 md:gap-6 lg:gap-8">
-                {project.productImages.slice(4, 6).map((imageSrc, index) => (
-                  <div
-                    key={index}
-                    className="overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
-                  >
-                    <img
-                      src={imageSrc}
-                      alt={`${project.name} product ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      loading={index < 2 ? "eager" : "lazy"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {project?.videos && project.videos.length > 0 && (
             <div className="mb-6 md:mb-32 max-w-6xl mx-auto">

@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { projects } from "../index";
 import ScrollSmoothProvider from "../../../components/ScrollSmoothProvider";
-import { Link } from "@tanstack/react-router";
 import ProjectFooter from "../../../components/ProjectFooter";
 import PageLoader from "../../../components/PageLoader";
 import { usePageLoader } from "../../../hooks/usePageLoader";
 
-const NikeJilouProject = () => {
-  const project = projects.find((p) => p.id === "nike-jilou");
+const NikeZalandoProject = () => {
+  const project = projects.find((p) => p.id === "nike-zalando");
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [contentLoaded, setContentLoaded] = useState(false);
 
-  const { isLoading } = usePageLoader([imagesLoaded, contentLoaded], 1350);
+  const { isLoading } = usePageLoader([imagesLoaded, contentLoaded], 1300);
 
   useEffect(() => {
     // Track image loading
@@ -42,7 +41,7 @@ const NikeJilouProject = () => {
     // Content loading timer
     const contentTimer = setTimeout(() => {
       setContentLoaded(true);
-    }, 750);
+    }, 700);
 
     const handleIframeMouseEnter = () => {
       document.body.style.cursor = "default";
@@ -81,12 +80,24 @@ const NikeJilouProject = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
               <div>
                 <h1 className="text-7xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-black dark:text-white mb-0 leading-none">
-                  {project?.name || "Nike"}.
+                  {project?.name}.
                 </h1>
               </div>
               <div className="lg:pt-24">
+                <p className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white leading-relaxed max-w-7xl mb-6">
+                  As part of its GEN SHOX event series, Nike x Zalando brought
+                  the format to Berlin to mark the launch of the Nike Shox Z.
+                  The new silhouette, introduced at the end of the year, marked
+                  a new chapter for Shox. Bold by design and unapologetic in
+                  attitude, it is a shoe that was never meant to please
+                  everyone, but to stand for self-expression and individuality.
+                </p>
                 <p className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white leading-relaxed max-w-7xl mb-40">
-                  {project?.tagline || "Just Do It Campaign"}
+                  That idea became the starting point for the GEN SHOX Berlin
+                  Edition, curated by Zalando x Nike as an experience built
+                  around the belief that style, like culture, does not exist in
+                  one shape. It moves through different scenes, rhythms, and
+                  communities.
                 </p>
               </div>
             </div>
@@ -149,11 +160,11 @@ const NikeJilouProject = () => {
 
           {project?.productImages && project.productImages.length > 0 && (
             <div className="mb-6 md:mb-32 max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-3  gap-4 md:gap-6 lg:gap-8">
-                {project.productImages.slice(0, 3).map((imageSrc, index) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2  gap-4 md:gap-6 lg:gap-8">
+                {project.productImages.slice(0, 4).map((imageSrc, index) => (
                   <div
                     key={index}
-                    className=" overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
+                    className="overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
                   >
                     <img
                       src={imageSrc}
@@ -168,7 +179,7 @@ const NikeJilouProject = () => {
           )}
 
           {/* The Project Section */}
-          <div className="mb-20 md:mb-32 max-w-6xl">
+          <div className="mb-6 md:mb-32 max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
               <div>
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black dark:text-white mb-0">
@@ -176,27 +187,36 @@ const NikeJilouProject = () => {
                 </h2>
               </div>
               <div>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed mb-6">
+                  GEN SHOX was designed as a three-part experience where genre
+                  became a feeling rather than a label. Hip-hop, electronic, and
+                  ballroom: worlds that usually orbit separately shared the same
+                  floor for one night.
+                </p>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
-                  {project?.projectDescription ||
-                    "A comprehensive brand campaign that captures the essence of athletic excellence and inspires people to push their limits. Our approach focused on creating powerful visual narratives that resonate with athletes and everyday consumers alike."}
+                  Our role was to translate this unique experience into film. We
+                  followed the night from its first moments to its peak,
+                  focusing on faces, movement, and the energy created by people
+                  coming together and stepping into territory beyond familiar
+                  circles.
                 </p>
               </div>
             </div>
           </div>
 
-          {project?.productImages && project.productImages.length > 3 && (
-            <div className="mb-6 md:mb-16 max-w-7xl mx-auto">
+          {project?.productImages && project.productImages.length > 0 && (
+            <div className="mb-6 md:mb-32 max-w-7xl mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2  gap-4 md:gap-6 lg:gap-8">
-                {project.productImages.slice(3, 5).map((imageSrc, index) => (
+                {project.productImages.slice(4, 6).map((imageSrc, index) => (
                   <div
-                    key={index + 3}
-                    className=" overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
+                    key={index}
+                    className="overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
                   >
                     <img
                       src={imageSrc}
-                      alt={`${project.name} product ${index + 4}`}
+                      alt={`${project.name} product ${index + 1}`}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      loading="lazy"
+                      loading={index < 2 ? "eager" : "lazy"}
                     />
                   </div>
                 ))}
@@ -204,23 +224,27 @@ const NikeJilouProject = () => {
             </div>
           )}
 
-          <div className="mb-6 md:mb-32 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 gap-4 md:gap-6 lg:gap-8">
-              {project.productImages.slice(5).map((imageSrc, index) => (
-                <div
-                  key={index + 3}
-                  className=" overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800"
-                >
-                  <img
-                    src={imageSrc}
-                    alt={`${project.name} product ${index + 4}`}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+          {project?.videos && project.videos.length > 0 && (
+            <div className="mb-6 md:mb-32 max-w-6xl mx-auto">
+              <div className="relative aspect-video overflow-hidden rounded-lg md:rounded-xl bg-gray-100 dark:bg-gray-800">
+                <iframe
+                  src={`https://customer-64sz73htfhb823gb.cloudflarestream.com/${project.videos[0]}/iframe?poster=https%3A%2F%2Fcustomer-64sz73htfhb823gb.cloudflarestream.com%2F${project.videos[0]}%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&autoplay=true&loop=true&muted=true`}
+                  loading="eager"
+                  style={{
+                    border: "none",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                  className="hover:cursor-default rounded-lg md:rounded-xl"
+                  allowFullScreen={true}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Final Section */}
           <div className="max-w-6xl">
@@ -232,41 +256,19 @@ const NikeJilouProject = () => {
               </div>
               <div>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-black dark:text-white leading-relaxed">
-                  {project?.finalDescription ||
-                    "The campaign successfully elevated brand perception and drove significant engagement across all digital platforms. Our innovative approach to storytelling created a lasting impact that resonated with audiences globally, establishing a new benchmark for athletic brand communication."}
+                  {project?.finalDescription}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        {project?.videos && project.videos.length > 0 && (
-          <div className="mb-20 md:mb-32 max-w-6xl mx-auto">
-            <div className="relative aspect-video overflow-hidden rounded-lg md:rounded-xl bg-gray-100 dark:bg-gray-800">
-              <iframe
-                src={`https://customer-64sz73htfhb823gb.cloudflarestream.com/${project.videos[0]}/iframe?poster=https%3A%2F%2Fcustomer-64sz73htfhb823gb.cloudflarestream.com%2F${project.videos[0]}%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&autoplay=true&loop=true&muted=true`}
-                loading="eager"
-                style={{
-                  border: "none",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                className="hover:cursor-default rounded-lg md:rounded-xl"
-                allowFullScreen={true}
-              />
-            </div>
-          </div>
-        )}
         <ProjectFooter
-          prevProject="/projects/3d"
-          nextProject="/projects/nike-zalando"
+          prevProject="/projects/nike-jilou"
+          nextProject="/projects/nike-sp24"
         />
       </main>
     </PageLoader>
   );
 };
 
-export default NikeJilouProject;
+export default NikeZalandoProject;

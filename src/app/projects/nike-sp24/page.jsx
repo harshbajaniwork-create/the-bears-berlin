@@ -246,7 +246,7 @@ const NikeSp24Project = () => {
         )}
 
         <ProjectFooter
-          prevProject="/projects/nike-jilou"
+          prevProject="/projects/nike-zalando"
           nextProject="/projects/zalando-nike"
         />
       </main>

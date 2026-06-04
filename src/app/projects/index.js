@@ -23,6 +23,50 @@ export const projects = [
       "/product-images/jilou-6.webp",
     ],
   },
+  {
+    id: "nike-zalando",
+    name: "Zalando x Nike",
+    image: "/zalando-nike.jpeg",
+    logo: "/nike-logo.png",
+    scopeOfWork: "Production",
+    industry: "Sport, Lifestyle, Fashion",
+    year: "2026",
+    tagline:
+      "WNBA champion and basketball icon A'ja Wilson brought the global launch tour of her signature shoe directly to Berlin. Timed with International Women’s Day, Nike and Zalando created a full-day experience for female basketball community to celebrate a new chapter in basketball culture.",
+    projectDescription:
+      "We directed the content strategy and executed full-day production for this high-stakes activation. Captured entirely through an all-female lens, our team managed the strict pace and tight boundaries of a global superstar tour. The role required securing every high-profile moment of world-class stardom while remaining completely seamless on the ground. We captured the elite intensity of the launch while keeping the pure inspiration and raw energy of the local game completely undisturbed.",
+    finalDescription:
+      "The delivery yielded a media library for the e-com launch, social platforms, and brand channels. Every asset captured the unique intersection of international sports heritage and local grassroots culture. The creative execution maintained a sharp product focus while delivering deeply inspirational storytelling. While anchored in Berlin, these visuals fueled the broader European campaign and global launch. Ultimately, the work left a trace in the digital wild, turning this milestone into a massive cultural movement. ",
+    videos: ["55ac8fc3410ecc7cd9b03e9ed166eda4"],
+    productImages: [
+      "/product-images/jilou-1.avif",
+      "/product-images/jilou-2.webp",
+      "/product-images/jilou-3.avif",
+      "/product-images/jilou-4.webp",
+      "/product-images/jilou-5.webp",
+      "/product-images/jilou-6.webp",
+    ],
+    productVideos: [
+      {
+        id: "a9ecc5ffc75f5d3c2ad5068e882635b0",
+        label: "The shoe",
+        caption: "Signature A'ja Wilson detail — product-first cutdown",
+        scale: 1.5,
+      },
+      {
+        id: "b94f278448910275497bfef3fbc28da7",
+        label: "The game",
+        caption: "On-court movement and elite intensity",
+        scale: 1.45,
+      },
+      {
+        id: "0e6fecf1216f80ea33b21cb98891e35e",
+        label: "The community",
+        caption: "Berlin's female basketball scene in motion",
+        scale: 1.45,
+      },
+    ],
+  },
   // {
   //   id: "nike-zalando",
   //   name: "Zalando x Nike",

@@ -28,7 +28,7 @@ export const projects = [
     name: "Zalando x Nike",
     image: "/zalando-nike.jpeg",
     logo: "/nike-logo.png",
-    scopeOfWork: "Production",
+    scopeOfWork: "Production, Post-Production",
     industry: "Sport, Lifestyle, Fashion",
     year: "2026",
     tagline:
@@ -50,7 +50,7 @@ export const projects = [
       {
         id: "a9ecc5ffc75f5d3c2ad5068e882635b0",
         label: "The shoe",
-        caption: "Signature A'ja Wilson detail — product-first cutdown",
+        caption: "Signature A'ja Wilson detail : product-first cutdown",
         scale: 1.5,
       },
       {
